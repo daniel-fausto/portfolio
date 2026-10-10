@@ -5,7 +5,7 @@ export const profile = {
   location: "Mérida, Yucatán, México",
   email: "ib.daniel.fausto@gmail.com",
   linkedin: "https://www.linkedin.com/in/daniel-fausto-franco/",
-  github: "https://github.com/Darkon555",
+  github: "https://github.com/daniel-fausto",
   summary:
     "Software Developer with 6+ years of experience building and supporting systems at scale — POS, kitchen management, dashboards, and even autonomous robots. Backed by a Biomedical Engineering foundation, I can take a product end-to-end: from the microcontroller to the frontend.",
 };
@@ -42,7 +42,17 @@ export const projects: Project[] = [
       "Full-stack app that processes documents intelligently: upload an image and it extracts and structures the data with OCR and LLMs. Built as a personal project to explore applied AI.",
     tech: ["React 19", "Vite", "TailwindCSS", "Express", "MongoDB", "OpenAI", "Google Gemini", "Tesseract.js (OCR)"],
     links: [
-      { label: "GitHub repo", href: "https://github.com/Darkon555/agenda-inteligente" },
+      { label: "GitHub repo", href: "https://github.com/daniel-fausto/agenda-inteligente" },
+    ],
+  },
+  {
+    title: "Tech Showcase — Full-Stack Monorepo",
+    tag: "Full-Stack · Spec-Driven · Open Source",
+    description:
+      "A spec-driven monorepo with three independent demo apps, each built on a different stack to show the same engineering principles across ecosystems: an AI task manager, a mini point-of-sale, and a receipt reader with OCR + local LLM. Includes unit/e2e tests and Docker for every demo.",
+    tech: ["Next.js", "React", "Angular", "Vue 3", "Node/Express", "Flask", "PostgreSQL", "SQLite", "Jest", "Playwright", "Cypress", "Docker", "Ollama", "Tesseract"],
+    links: [
+      { label: "GitHub repo", href: "https://github.com/daniel-fausto/tech-showcase" },
     ],
   },
   {
