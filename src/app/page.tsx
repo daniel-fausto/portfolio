@@ -1,69 +1,253 @@
-import Image from "next/image";
+import { profile, projects, skills, experience } from "./data";
+
+function Nav() {
+  const links = [
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Skills", href: "#skills" },
+    { label: "Experience", href: "#experience" },
+    { label: "Contact", href: "#contact" },
+  ];
+  return (
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0b1120]/80 backdrop-blur">
+      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+        <a href="#top" className="font-mono text-sm font-bold text-accent">
+          DFF<span className="text-slate-400">.dev</span>
+        </a>
+        <ul className="hidden gap-6 text-sm text-slate-300 sm:flex">
+          {links.map((l) => (
+            <li key={l.href}>
+              <a href={l.href} className="transition-colors hover:text-accent">
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
+  );
+}
+
+function Hero() {
+  return (
+    <section id="top" className="relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(56,189,248,0.15),transparent)]" />
+      <div className="mx-auto max-w-5xl px-6 py-24 sm:py-32">
+        <p className="font-mono text-sm text-accent">Hi, my name is</p>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight text-white sm:text-6xl">
+          {profile.name}
+        </h1>
+        <h2 className="mt-2 text-2xl font-semibold text-slate-400 sm:text-4xl">
+          {profile.role}
+        </h2>
+        <p className="mt-4 max-w-2xl text-lg text-slate-400">{profile.tagline}</p>
+        <p className="mt-6 max-w-2xl leading-relaxed text-slate-300">{profile.summary}</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a
+            href="#projects"
+            className="rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-[#0b1120] transition-opacity hover:opacity-90"
+          >
+            View my work
+          </a>
+          <a
+            href={`mailto:${profile.email}`}
+            className="rounded-md border border-accent/50 px-5 py-2.5 text-sm font-semibold text-accent transition-colors hover:bg-accent/10"
+          >
+            Get in touch
+          </a>
+        </div>
+        <div className="mt-8 flex gap-5 text-sm text-slate-400">
+          <a href={profile.github} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+            GitHub
+          </a>
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+            LinkedIn
+          </a>
+          <span>📍 {profile.location}</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SectionTitle({ n, title }: { n: string; title: string }) {
+  return (
+    <h2 className="mb-10 flex items-center gap-3 text-2xl font-bold text-white">
+      <span className="font-mono text-base text-accent">{n}.</span>
+      {title}
+      <span className="h-px flex-1 bg-white/10" />
+    </h2>
+  );
+}
+
+function About() {
+  return (
+    <section id="about" className="mx-auto max-w-5xl px-6 py-20">
+      <SectionTitle n="01" title="About me" />
+      <div className="grid gap-8 md:grid-cols-5">
+        <div className="md:col-span-3 space-y-4 text-slate-300">
+          <p>
+            I&apos;m a Software Developer with a Biomedical Engineering background, which lets me
+            take products end-to-end — from the <span className="text-accent">microcontroller to the frontend</span>.
+          </p>
+          <p>
+            Today I build and support enterprise POS systems with Angular, Vue and TypeScript.
+            Previously I led an electronics team building autonomous robots and explored applied AI.
+          </p>
+          <p>I care about clean architecture, automated testing and shipping reliable software.</p>
+        </div>
+        <ul className="md:col-span-2 space-y-2 text-sm text-slate-300">
+          <li>🏅 Intel Partner of the Year #1 in AI (2020)</li>
+          <li>👥 Led a team of 2 as Head of Electronics</li>
+          <li>🤖 Built autonomous vending robots</li>
+          <li>🧪 Testing with Jest &amp; Playwright</li>
+          <li>🌎 Spanish (native) · English (B2)</li>
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function Projects() {
+  return (
+    <section id="projects" className="mx-auto max-w-5xl px-6 py-20">
+      <SectionTitle n="02" title="Projects" />
+      <div className="grid gap-6 md:grid-cols-2">
+        {projects.map((p) => (
+          <article
+            key={p.title}
+            className="flex flex-col rounded-xl border border-white/10 bg-white/[0.03] p-6 transition-colors hover:border-accent/40"
+          >
+            <div className="mb-2 flex items-start justify-between gap-3">
+              <h3 className="text-lg font-semibold text-white">{p.title}</h3>
+            </div>
+            <p className="font-mono text-xs text-accent">{p.tag}</p>
+            {p.highlight && (
+              <p className="mt-2 inline-block w-fit rounded bg-amber-400/10 px-2 py-0.5 text-xs font-semibold text-amber-300">
+                {p.highlight}
+              </p>
+            )}
+            <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-300">{p.description}</p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {p.tech.map((t) => (
+                <li
+                  key={t}
+                  className="rounded-full border border-white/10 px-2.5 py-0.5 text-xs text-slate-300"
+                >
+                  {t}
+                </li>
+              ))}
+            </ul>
+            {p.links.length > 0 && (
+              <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                {p.links.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent hover:underline"
+                  >
+                    {l.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Skills() {
+  return (
+    <section id="skills" className="mx-auto max-w-5xl px-6 py-20">
+      <SectionTitle n="03" title="Skills" />
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {skills.map((s) => (
+          <div key={s.group} className="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+            <h3 className="mb-3 font-semibold text-accent">{s.group}</h3>
+            <ul className="flex flex-wrap gap-2">
+              {s.items.map((i) => (
+                <li key={i} className="rounded bg-white/5 px-2 py-1 text-xs text-slate-300">
+                  {i}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Experience() {
+  return (
+    <section id="experience" className="mx-auto max-w-5xl px-6 py-20">
+      <SectionTitle n="04" title="Experience" />
+      <ol className="relative border-l border-white/10">
+        {experience.map((e) => (
+          <li key={e.role + e.company} className="mb-10 ml-6">
+            <span className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full bg-accent" />
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 className="text-lg font-semibold text-white">{e.role}</h3>
+              <span className="font-mono text-xs text-slate-400">{e.period}</span>
+            </div>
+            <p className="text-sm text-accent">{e.company}</p>
+            <ul className="mt-2 list-disc space-y-1 pl-4 text-sm text-slate-300">
+              {e.points.map((pt) => (
+                <li key={pt}>{pt}</li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" className="mx-auto max-w-3xl px-6 py-24 text-center">
+      <p className="font-mono text-sm text-accent">05. What&apos;s next?</p>
+      <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">Get in touch</h2>
+      <p className="mx-auto mt-4 max-w-xl text-slate-300">
+        I&apos;m open to remote Full-Stack / Frontend opportunities. Let&apos;s talk.
+      </p>
+      <a
+        href={`mailto:${profile.email}`}
+        className="mt-8 inline-block rounded-md border border-accent px-8 py-3 font-semibold text-accent transition-colors hover:bg-accent/10"
+      >
+        {profile.email}
+      </a>
+      <div className="mt-8 flex justify-center gap-6 text-sm text-slate-400">
+        <a href={profile.github} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+          GitHub
+        </a>
+        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+          LinkedIn
+        </a>
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <Nav />
+      <main>
+        <Hero />
+        <About />
+        <Projects />
+        <Skills />
+        <Experience />
+        <Contact />
       </main>
-    </div>
+      <footer className="border-t border-white/10 py-6 text-center text-xs text-slate-500">
+        Built with Next.js &amp; TailwindCSS · © 2025 {profile.name}
+      </footer>
+    </>
   );
 }
