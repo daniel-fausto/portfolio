@@ -42,7 +42,7 @@ export const projects: Project[] = [
       "Full-stack app that processes documents intelligently: upload an image and it extracts and structures the data with OCR and LLMs. Built as a personal project to explore applied AI.",
     tech: ["React 19", "Vite", "TailwindCSS", "Express", "MongoDB", "OpenAI", "Google Gemini", "Tesseract.js (OCR)"],
     links: [
-      { label: "GitHub repo", href: "https://github.com/daniel-fausto/agenda-inteligente" },
+      { label: "▶ Live app", href: "https://agenda-inteligente-b34e7.web.app/dashboard" },
     ],
   },
   {
