@@ -49,9 +49,10 @@ export const projects: Project[] = [
     title: "Tech Showcase — Full-Stack Monorepo",
     tag: "Full-Stack · Spec-Driven · Open Source",
     description:
-      "A spec-driven monorepo with three independent demo apps, each built on a different stack to show the same engineering principles across ecosystems: an AI task manager, a mini point-of-sale, and a receipt reader with OCR + local LLM. Includes unit/e2e tests and Docker for every demo.",
+      "A spec-driven monorepo with three independent demo apps, each built on a different stack to show the same engineering principles across ecosystems: an AI task manager, a mini point-of-sale, and a receipt reader with OCR + local LLM. Includes unit/e2e tests and Docker for every demo. Try the live, in-browser versions or read the full-stack source.",
     tech: ["Next.js", "React", "Angular", "Vue 3", "Node/Express", "Flask", "PostgreSQL", "SQLite", "Jest", "Playwright", "Cypress", "Docker", "Ollama", "Tesseract"],
     links: [
+      { label: "▶ Live demos", href: "https://showcase-live-seven.vercel.app/" },
       { label: "GitHub repo", href: "https://github.com/daniel-fausto/tech-showcase" },
     ],
   },
