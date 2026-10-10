@@ -55,6 +55,13 @@ function Hero() {
           >
             Get in touch
           </a>
+          <a
+            href="/Daniel_Fausto_Franco_CV_EN.pdf"
+            download
+            className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-semibold text-slate-200 transition-colors hover:border-accent hover:text-accent"
+          >
+            ↓ Download CV
+          </a>
         </div>
         <div className="mt-8 flex gap-5 text-sm text-slate-400">
           <a href={profile.github} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
@@ -139,16 +146,17 @@ function Projects() {
               ))}
             </ul>
             {p.links.length > 0 && (
-              <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+              <div className="mt-5 flex flex-wrap gap-2 border-t border-white/10 pt-4">
                 {p.links.map((l) => (
                   <a
                     key={l.href}
                     href={l.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-accent hover:underline"
+                    className="inline-flex items-center gap-1 rounded-md border border-accent/40 px-3 py-1.5 text-sm font-medium text-accent transition-colors hover:bg-accent/10"
                   >
                     {l.label}
+                    <span aria-hidden>↗</span>
                   </a>
                 ))}
               </div>
