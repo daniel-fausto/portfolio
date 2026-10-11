@@ -264,12 +264,14 @@ function Contact({ lang }: { lang: Locale }) {
 export default function Home() {
   const [lang, setLang] = useState<Locale>("en");
   const [years, setYears] = useState(7);
+  const [year, setYear] = useState(2026);
 
   useEffect(() => {
     const saved = localStorage.getItem("lang") as Locale | null;
     if (saved === "en" || saved === "es") setLang(saved);
     else if (navigator.language.toLowerCase().startsWith("es")) setLang("es");
     setYears(yearsOfExperience());
+    setYear(new Date().getFullYear());
   }, []);
 
   const changeLang = (l: Locale) => {
@@ -295,7 +297,7 @@ export default function Home() {
         <Contact lang={lang} />
       </main>
       <footer className="border-t border-white/10 py-6 text-center text-xs text-slate-500">
-        {content[lang].footer} · © 2025 {profile.name}
+        {content[lang].footer} · © {year} {profile.name}
       </footer>
     </>
   );
