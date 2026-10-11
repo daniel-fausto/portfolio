@@ -280,6 +280,11 @@ export default function Home() {
 
   return (
     <>
+      <div className="aurora" aria-hidden>
+        <span className="l1" />
+        <span className="l2" />
+        <span className="l3" />
+      </div>
       <Nav lang={lang} setLang={changeLang} />
       <main>
         <Hero lang={lang} />
