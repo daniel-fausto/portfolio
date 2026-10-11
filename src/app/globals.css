@@ -45,25 +45,25 @@ body {
 .aurora .l1 {
   width: 50vw;
   height: 50vw;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.5), transparent 70%);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.45), transparent 70%);
   top: -10%;
   left: -10%;
   animation: aurora-sweep 22s ease-in-out infinite;
 }
 
 .aurora .l2 {
-  width: 40vw;
-  height: 40vw;
-  background: radial-gradient(circle, rgba(129, 140, 248, 0.45), transparent 70%);
+  width: 45vw;
+  height: 45vw;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.55), transparent 70%);
   bottom: -15%;
   right: -10%;
   animation: aurora-drift 28s ease-in-out infinite;
 }
 
 .aurora .l3 {
-  width: 30vw;
-  height: 30vw;
-  background: radial-gradient(circle, rgba(45, 212, 191, 0.4), transparent 70%);
+  width: 32vw;
+  height: 32vw;
+  background: radial-gradient(circle, rgba(192, 38, 211, 0.5), transparent 70%);
   top: 40%;
   left: 60%;
   animation: aurora-pulse 18s ease-in-out infinite;
