@@ -60,11 +60,10 @@ export function SiteHeader({ lang, shortName, dict }: Props) {
           ))}
         </nav>
         <div className="nav-actions">
-          <div className="language" aria-label={dict.langLabel}>
+          <div className="language" role="group" aria-label={dict.langLabel}>
             <Link href="/es" lang="es" hrefLang="es" aria-current={lang === "es" ? "page" : undefined}>
               ES
             </Link>
-            <span>/</span>
             <Link href="/en" lang="en" hrefLang="en" aria-current={lang === "en" ? "page" : undefined}>
               EN
             </Link>

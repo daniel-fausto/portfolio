@@ -5,7 +5,7 @@ import { CvDialog } from "@/components/CvDialog";
 import { CvOptions } from "@/components/CvOptions";
 import { ProjectGrid } from "@/components/ProjectGrid";
 import { SiteHeader } from "@/components/SiteHeader";
-import { ArrowUpIcon, CapIcon, ChipIcon, ExternalIcon, MailIcon, PlusIcon } from "@/components/icons";
+import { CapIcon, ChipIcon, ExternalIcon, GitHubIcon, LinkedInIcon, MailIcon, PlusIcon } from "@/components/icons";
 import { BRANDS, INTEL_PRESS, SITE_URL, dictionaries, hasLocale, profile } from "../content";
 import { getYears } from "../years";
 
@@ -80,12 +80,12 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
               </div>
               <div className="hero-socials">
                 <a className="text-link" href={profile.github} target="_blank" rel="noopener noreferrer">
+                  <GitHubIcon />
                   GitHub
-                  <ExternalIcon />
                 </a>
                 <a className="text-link" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+                  <LinkedInIcon />
                   LinkedIn
-                  <ExternalIcon />
                 </a>
               </div>
               <p className="availability">{t.hero.availability}</p>
@@ -304,12 +304,12 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
             </a>
             <div className="contact-links">
               <a className="text-link" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+                <LinkedInIcon />
                 LinkedIn
-                <ExternalIcon />
               </a>
               <a className="text-link" href={profile.github} target="_blank" rel="noopener noreferrer">
+                <GitHubIcon />
                 GitHub
-                <ExternalIcon />
               </a>
               <CopyEmail email={profile.email} label={t.contact.copy} copied={t.contact.copied} failed={t.contact.copyFailed} />
             </div>
@@ -327,10 +327,6 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
             {profile.name}
           </a>
           <p>{t.footer.tagline}</p>
-          <a href="#top" className="text-link">
-            {t.footer.backToTop}
-            <ArrowUpIcon />
-          </a>
         </div>
       </footer>
       <BackToTop label={t.footer.backToTop} />

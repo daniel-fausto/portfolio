@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CheckIcon, CopyIcon } from "./icons";
 
 type Props = { email: string; label: string; copied: string; failed: string };
 
@@ -27,6 +28,7 @@ export function CopyEmail({ email, label, copied, failed }: Props) {
   return (
     <>
       <button type="button" className="copy-email text-link" onClick={copy}>
+        {status === copied ? <CheckIcon /> : <CopyIcon />}
         {status === copied ? copied : label}
       </button>
       <span className="sr-only" role="status">
